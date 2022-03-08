@@ -33,38 +33,43 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="@Url.Action("alleventpage", "Home")">Events<span class="sr-only">(current)</span></a>
                 </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="@Url.Action("AboutUS", "Home")">AboutUs<span class="sr-only">(current)</span></a>
+                </li>
                 @{ int x = 0; }
                 @{ if (@Session["userrNameSession"] == null || x == 1)
                     {
-        <li class="disabled">
-            <a class="nav-link" onclick="">Cart<span class="sr-only">(current)</span></a>
-        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-display="static" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                LOGIN/SIGNUP
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="@Url.Action("AdminLogin", "Admin")">Admin Login</a>
-                                <a class="dropdown-item" href="@Url.Action("login", "home")">Customer Login</a>
-                                <a class="dropdown-item" href="@Url.Action("signup", "home")">Customer Signup</a>
-                            </div>
+            <li class="disabled">
+                <a class="nav-link" onclick="">Cart<span class="sr-only">(current)</span></a>
+            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-display="static" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    LOGIN/SIGNUP
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="@Url.Action("AdminLogin", "Admin")">Admin Login</a>
+                                    <a class="dropdown-item" href="@Url.Action("login", "home")">Customer Login</a>
+                                    <a class="dropdown-item" href="@Url.Action("signup", "home")">Customer Signup</a>
+                                </div>
 
-                        </li> }
-                                    else
-                                    {
-                        <li class="active">
-                            <a class="nav-link" onclick="">Cart<span class="sr-only">(current)</span></a>
-                        </li>
-                                        <li class="nav-item dropdown">
-                                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-display="static" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                @Session["userrNameSession"]
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="navbarDropdown">
+                            </li>
+ }
+                        else
+                        {
+            <li class="active">
+                <a class="nav-link" onclick="">Cart<span class="sr-only">(current)</span></a>
+            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-display="static" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    @Session["userrNameSession"]
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="navbarDropdown">
 
-                                                <a class="dropdown-item" href="@Url.Action("Logout", "Home")">Logout</a>
-                                            </div>
+                                    <a class="dropdown-item" href="@Url.Action("Logout", "Home")">Logout</a>
+                                </div>
 
-                                        </li> } }
+                            </li>
+ } }
             </ul>
 
         </div>

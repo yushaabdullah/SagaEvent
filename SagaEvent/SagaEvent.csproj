@@ -172,6 +172,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\cardstyle.css" />
+    <Content Include="Content\team.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -184,13 +185,14 @@
     <Content Include="Images\birthday_02.jpeg" />
     <Content Include="Images\birthday_03.jpeg" />
     <Content Include="Images\birthday_04.jpeg" />
-    <Content Include="Images\hasan.jpeg" />
+    <Content Include="Images\hasan.jpg" />
     <Content Include="Images\img1.jpg" />
     <Content Include="Images\img2.jpg" />
     <Content Include="Images\img3.jpg" />
     <Content Include="Images\img4.jpg" />
     <Content Include="Images\img5.jpg" />
     <Content Include="Images\img6.jpg" />
+    <Content Include="Images\jim.jpg" />
     <Content Include="Images\logo2.jpg" />
     <Content Include="Images\slide1.jpeg" />
     <Content Include="Images\slide2.jpeg" />
@@ -204,7 +206,7 @@
     <Content Include="Images\wedding_02.jpeg" />
     <Content Include="Images\wedding_03.jpeg" />
     <Content Include="Images\wedding_04.jpeg" />
-    <Content Include="Images\yusha.jpeg" />
+    <Content Include="Images\yusha.jpg" />
     <Content Include="Models\SagaEventDBModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>SagaEventDBModel.Context.cs</LastGenOutput>
@@ -259,6 +261,7 @@
     <Content Include="Views\Admin\EditEvent.cshtml" />
     <Content Include="Views\Admin\ViewUser.cshtml" />
     <Content Include="Views\Home\alleventpage.cshtml" />
+    <Content Include="Views\Home\AboutUS.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

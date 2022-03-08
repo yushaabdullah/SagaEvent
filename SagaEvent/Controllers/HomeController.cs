@@ -17,7 +17,7 @@ namespace SagaEvent.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult AboutUS()
         {
             ViewBag.Message = "Your application description page.";
 
