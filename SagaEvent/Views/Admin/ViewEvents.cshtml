@@ -1,0 +1,158 @@
+﻿@model List<SagaEvent.Models.EVENT>
+@using SagaEvent.Controllers
+
+
+
+
+@{ Layout = null; }
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+
+    <link rel="stylesheet" href="~/Content/admindashstyle.css">
+    <title>Admin panel</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="topbar">
+            <div class="logo">
+                <h3>Welcome @Session["adminEmailSession"]</h3>
+            </div>
+
+
+            <div class="user">
+                <button class="btn-danger"><a href="@Url.Action("AdminLogout", "Admin")">LogOut<span class="sr-only">(current)</span></a></button>
+
+
+            </div>
+        </div>
+        @{ if (@Session["adminEmailSession"].Equals("admin@gmail.com"))
+            {
+<div class="sidebar">
+    <ul>
+        <li>
+            <a href="#">
+                <i class="fas fa-chart-bar"></i>
+                <div>All Orders</div>
+            </a>
+        </li>
+        <li>
+            <a href="../Admin/AddAdmin">
+                <i class="fas fa-user"></i>
+                <div>Add Admin</div>
+            </a>
+        </li>
+
+        <li>
+            <a href="../adminlogin/viewuser">
+                <i class="fas fa-users"></i>
+                <div>All User</div>
+            </a>
+        </li>
+
+
+        <li>
+            <a href="../Admin/AddEvent">
+                <i class="fas fa-cog"></i>
+                <div>Add Event</div>
+            </a>
+        </li>
+        <li>
+            <a href="../Admin/ViewEvents">
+                <i class="fas fa-th-large"></i>
+                <div>All Events</div>
+            </a>
+        </li>
+    </ul>
+</div> }
+else
+{
+<div class="sidebar">
+    <ul>
+        <li>
+            <a href="#">
+                <i class="fas fa-chart-bar"></i>
+                <div>All Orders</div>
+            </a>
+        </li>
+        @*<li>
+                <a href="../adminlogin/addadmin">
+                    <i class="fas fa-user"></i>
+                    <div>Add Admin</div>
+                </a>
+            </li>*@
+
+        @*<li>
+                <a href="#">
+                    <i class="fas fa-users"></i>
+                    <div>All User</div>
+                </a>
+            </li>*@
+
+
+        <li>
+            <a href="../Admin/AddEvent">
+                <i class="fas fa-cog"></i>
+                <div>Add Event</div>
+            </a>
+        </li>
+        <li>
+            <a href="../Admin/ViewEvents">
+                <i class="fas fa-th-large"></i>
+                <div>All Events</div>
+            </a>
+        </li>
+    </ul>
+</div> } }
+        <div class="main">
+            <div class="charts">
+                <div class="chart">
+
+
+
+                    <table class="table-bordered">
+                        <tr>
+                            <th>Event Name</th>
+                            <th>Event Type</th>
+                            <th>Event Description</th>
+                            <th>Event Preparation Time</th>
+                            <th>Event Price</th>
+                            <th>Event Image</th>
+                            <th>Action</th>
+
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+            <tr>
+                <td>@item.eventName</td>
+                <td>@item.eventType</td>
+                <td>@item.eventDescription</td>
+                <td>@item.eventPreparationTime</td>
+                <td>@item.eventPrice</td>
+                <td>@item.eventPhoto</td>
+                <td>
+                    <a href="@Url.Action("EditEvent", new {item.eventName,item.eventType,item.eventDescription,item.eventPreparationTime,item.eventPrice,item.eventPhoto})" class="btn btn-success">Edit</a>
+                    <a href="@Url.Action("DeleteEvent", new {item.eventId})" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+}
+
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
+

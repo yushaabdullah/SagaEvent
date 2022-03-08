@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="sagaeventModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ADMIN">
+    <Key>
+      <PropertyRef Name="adminID" />
+    </Key>
+    <Property Name="adminID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="adminEmail" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="adminPassword" Type="varchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EVENTS">
+    <Key>
+      <PropertyRef Name="eventId" />
+    </Key>
+    <Property Name="eventId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="eventName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="eventType" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="eventDescription" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="eventPreparationTime" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="eventPrice" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="eventPhoto" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="eventRating" Type="float" />
+  </EntityType>
+  <EntityType Name="FOODS">
+    <Key>
+      <PropertyRef Name="foodId" />
+    </Key>
+    <Property Name="foodId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="foodName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="foodDescription" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="foodPrice" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="foodPhoto" Type="varchar" MaxLength="500" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ORDERS">
+    <Key>
+      <PropertyRef Name="orderId" />
+    </Key>
+    <Property Name="orderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="orderStatus" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="paymentStatus" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="guestNumber" Type="int" Nullable="false" />
+    <Property Name="eventDate" Type="date" Nullable="false" />
+    <Property Name="eventId" Type="int" Nullable="false" />
+    <Property Name="foodId" Type="int" Nullable="false" />
+    <Property Name="userId" Type="int" Nullable="false" />
+    <Property Name="eventPlace" Type="varchar" MaxLength="500" Nullable="false" />
+  </EntityType>
+  <EntityType Name="USERS">
+    <Key>
+      <PropertyRef Name="userId" />
+    </Key>
+    <Property Name="userId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userEmail" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="userPassword" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="userFullName" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="userAddresss" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="userPhone" Type="varchar" MaxLength="11" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__ORDERS__eventId__2E1BDC42">
+    <End Role="EVENTS" Type="Self.EVENTS" Multiplicity="1" />
+    <End Role="ORDERS" Type="Self.ORDERS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EVENTS">
+        <PropertyRef Name="eventId" />
+      </Principal>
+      <Dependent Role="ORDERS">
+        <PropertyRef Name="eventId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ORDERS__foodId__2F10007B">
+    <End Role="FOODS" Type="Self.FOODS" Multiplicity="1" />
+    <End Role="ORDERS" Type="Self.ORDERS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FOODS">
+        <PropertyRef Name="foodId" />
+      </Principal>
+      <Dependent Role="ORDERS">
+        <PropertyRef Name="foodId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ORDERS__userId__300424B4">
+    <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
+    <End Role="ORDERS" Type="Self.ORDERS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERS">
+        <PropertyRef Name="userId" />
+      </Principal>
+      <Dependent Role="ORDERS">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="sagaeventModelStoreContainer">
+    <EntitySet Name="ADMIN" EntityType="Self.ADMIN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EVENTS" EntityType="Self.EVENTS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FOODS" EntityType="Self.FOODS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ORDERS" EntityType="Self.ORDERS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USERS" EntityType="Self.USERS" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__ORDERS__eventId__2E1BDC42" Association="Self.FK__ORDERS__eventId__2E1BDC42">
+      <End Role="EVENTS" EntitySet="EVENTS" />
+      <End Role="ORDERS" EntitySet="ORDERS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ORDERS__foodId__2F10007B" Association="Self.FK__ORDERS__foodId__2F10007B">
+      <End Role="FOODS" EntitySet="FOODS" />
+      <End Role="ORDERS" EntitySet="ORDERS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ORDERS__userId__300424B4" Association="Self.FK__ORDERS__userId__300424B4">
+      <End Role="USERS" EntitySet="USERS" />
+      <End Role="ORDERS" EntitySet="ORDERS" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
