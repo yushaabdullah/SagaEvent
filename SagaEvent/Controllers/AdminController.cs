@@ -159,5 +159,22 @@ namespace SagaEvent.Controllers
         }
 
 
+
+        public ActionResult ViewUser()
+        {
+            var userlist = db.USERS.ToList();
+            return View(userlist);
+        }
+        public ActionResult DeleteUser(int userId)
+        {
+            var res = db.USERS.Where(x => x.userId == userId).First();
+            db.USERS.Remove(res);
+            db.SaveChanges();
+
+            var userlist = db.USERS.ToList();
+            return View("viewuser", userlist);
+        }
+
+
     }
 }
