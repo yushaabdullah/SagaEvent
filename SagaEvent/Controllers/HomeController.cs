@@ -95,5 +95,11 @@ namespace SagaEvent.Controllers
 
         }
 
+        public ActionResult alleventpage()
+        {
+            var eventlist = db.EVENTS.ToList();
+            return View(eventlist);
+        }
+
     }
 }
