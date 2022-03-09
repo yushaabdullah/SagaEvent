@@ -101,5 +101,13 @@ namespace SagaEvent.Controllers
             return View(eventlist);
         }
 
+
+        public ActionResult Categories(string type)
+        {
+            
+            var eventlist = db.EVENTS.Where(x => x.eventType == type).ToList();
+            return View(eventlist);
+        }
+
     }
 }

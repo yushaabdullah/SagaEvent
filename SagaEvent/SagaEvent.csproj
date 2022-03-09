@@ -262,6 +262,7 @@
     <Content Include="Views\Admin\ViewUser.cshtml" />
     <Content Include="Views\Home\alleventpage.cshtml" />
     <Content Include="Views\Home\AboutUS.cshtml" />
+    <Content Include="Views\Home\Categories.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
