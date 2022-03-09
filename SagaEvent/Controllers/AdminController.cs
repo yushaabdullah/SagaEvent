@@ -8,7 +8,6 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.IO;
 using System.Data.Entity;
-using System.Web.Mvc;
 using SagaEvent.Models;
 using SagaEvent.Controllers;
 

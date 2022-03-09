@@ -25,7 +25,14 @@
                     <br />
 
                     <p class="card-text">@item.eventDescription</p>
-                    <a href="#" class="btn mr-2"><i class="fas fa-link"></i>Book Now!</a>
+                    @if (@Session["userrNameSession"] == null)
+                    {
+                        <a href="@Url.Action("Login", "Home")" class="btn mr-2"><i class="fas fa-link"></i>Book Now!</a>
+                    }
+                    else
+                    {
+                        <a href="@Url.Action("Order", "Order", new {@item.eventId})" class="btn mr-2"><i class="fas fa-link"></i>Book Now!</a>
+                    }
 
                 </div>
             </div>

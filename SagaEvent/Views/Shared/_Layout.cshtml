@@ -39,9 +39,7 @@
                 @{ int x = 0; }
                 @{ if (@Session["userrNameSession"] == null || x == 1)
                     {
-            <li class="disabled">
-                <a class="nav-link" onclick="">Cart<span class="sr-only">(current)</span></a>
-            </li>
+            
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-display="static" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     LOGIN/SIGNUP
@@ -56,9 +54,7 @@
  }
                         else
                         {
-            <li class="active">
-                <a class="nav-link" onclick="">Cart<span class="sr-only">(current)</span></a>
-            </li>
+            
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-display="static" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     @Session["userrNameSession"]

@@ -11,17 +11,23 @@ namespace SagaEvent.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class ORDER
     {
         public int orderId { get; set; }
         public string orderStatus { get; set; }
         public string paymentStatus { get; set; }
+
+        [Display(Name = "Guest Number")]
         public int guestNumber { get; set; }
+        [Display(Name = "Event Date")]
         public System.DateTime eventDate { get; set; }
         public int eventId { get; set; }
         public int foodId { get; set; }
         public int userId { get; set; }
+        [Display(Name = "Event Place")]
         public string eventPlace { get; set; }
     
         public virtual EVENT EVENT { get; set; }

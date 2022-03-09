@@ -1,0 +1,46 @@
+﻿@model SagaEvent.Models.EVENT
+
+
+@using SagaEvent.Controllers
+
+
+@{
+    ViewBag.Title = "Order";
+}
+
+<link href="~/Content/cardstyle.css" rel="stylesheet" />
+<h4 style="text-align:center;text-decoration:underline;">Book Now!</h4>
+<div class="container mx-auto mt-4 ">
+    <div class="row">
+
+        @{
+
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="~/Images/@Model.eventPhoto" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">@Model.eventName</h5>
+                        <h6 class="card-subtitle mb-2 ">Price: @Model.eventPrice</h6>
+                        <h6 class="card-subtitle mb-2 ">Event Type: @Model.eventType</h6>
+                        <h6 class="card-subtitle mb-2 ">Event Preparation Time: @Model.eventPreparationTime</h6>
+                        <br />
+
+                        <p class="card-text">@Model.eventDescription</p>
+                        <a href="@Url.Action("OrderContinue", "Order")" class="btn mr-2"><i class="fas fa-link"></i>Continue to order</a>
+
+                    </div>
+                </div>
+            </div>
+
+
+        }
+    </div>
+
+
+
+
+
+
+
+</div>
+
