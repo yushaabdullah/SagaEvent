@@ -175,5 +175,50 @@ namespace SagaEvent.Controllers
         }
 
 
+        public ActionResult ViewOrders()
+        {
+            var eventlist = db.ORDERS.ToList();
+            return View(eventlist);
+        }
+
+
+
+        public ActionResult UpdateOrders(ORDER obj1)
+        {
+            
+            return View(obj1);
+        }
+
+
+        public ActionResult UpdateOrdersSave(ORDER obj)
+        {
+          
+
+            string mainconn = ConfigurationManager.ConnectionStrings["myconnection"].ConnectionString;
+            SqlConnection sqlconn = new SqlConnection(mainconn);
+            string sqlquery = "update [dbo].[ORDERS] set orderStatus=@orderStatus ,paymentStatus =@paymentStatus, guestNumber =@guestNumber,eventDate =@eventDate,eventId =@eventId,foodId =@foodId,userId =@userId,eventPlace =@eventPlace where orderId="+obj.orderId;
+            SqlCommand sqlcomm = new SqlCommand(sqlquery, sqlconn);
+            sqlconn.Open();
+
+
+
+
+            sqlcomm.Parameters.AddWithValue("@orderStatus", obj.orderStatus);
+            sqlcomm.Parameters.AddWithValue("@paymentStatus", obj.paymentStatus);
+            sqlcomm.Parameters.AddWithValue("@guestNumber", obj.guestNumber);
+            sqlcomm.Parameters.AddWithValue("@eventDate", obj.eventDate);
+            sqlcomm.Parameters.AddWithValue("@eventId", obj.eventId);
+            sqlcomm.Parameters.AddWithValue("@foodId", obj.foodId);
+            sqlcomm.Parameters.AddWithValue("@userId", obj.userId);
+            sqlcomm.Parameters.AddWithValue("@eventPlace", obj.eventPlace);
+
+
+            sqlcomm.ExecuteNonQuery();
+            sqlconn.Close();
+
+            return RedirectToAction("ViewOrders", "Admin");
+
+        }
+
     }
 }

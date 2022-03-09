@@ -267,6 +267,8 @@
     <Content Include="Views\Order\Order.cshtml" />
     <Content Include="Views\Order\OrderContinue.cshtml" />
     <Content Include="Views\Order\Confirmation.cshtml" />
+    <Content Include="Views\Admin\ViewOrders.cshtml" />
+    <Content Include="Views\Admin\UpdateOrders.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

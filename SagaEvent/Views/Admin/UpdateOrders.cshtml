@@ -1,0 +1,197 @@
+﻿@model SagaEvent.Models.ORDER
+@using SagaEvent.Controllers
+
+
+
+@{ Layout = null; }
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+
+    <link rel="stylesheet" href="~/Content/admindashstyle.css">
+    <title>Admin panel</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="topbar">
+            <div class="logo">
+                <h3>Welcome @Session["adminEmailSession"]</h3>
+            </div>
+
+
+            <div class="user">
+                <button class="btn-danger"><a href="@Url.Action("AdminLogout", "Admin")">LogOut<span class="sr-only">(current)</span></a></button>
+
+
+            </div>
+        </div>
+        @{ if (@Session["adminEmailSession"].Equals("admin@gmail.com"))
+            {
+                <div class="sidebar">
+                    <ul>
+                        <li>
+                            <a href="../Admin/ViewOrders">
+                                <i class="fas fa-chart-bar"></i>
+                                <div>All Orders</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../Admin/AddAdmin">
+                                <i class="fas fa-user"></i>
+                                <div>Add Admin</div>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="../Admin/ViewUser">
+                                <i class="fas fa-users"></i>
+                                <div>All User</div>
+                            </a>
+                        </li>
+
+
+                        <li>
+                            <a href="../Admin/AddEvent">
+                                <i class="fas fa-cog"></i>
+                                <div>Add Event</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../Admin/ViewEvents">
+                                <i class="fas fa-th-large"></i>
+                                <div>All Events</div>
+                            </a>
+                        </li>
+                    </ul>
+                </div> }
+            else
+            {
+                <div class="sidebar">
+                    <ul>
+                        <li>
+                            <a href="../Admin/ViewOrders">
+                                <i class="fas fa-chart-bar"></i>
+                                <div>All Orders</div>
+                            </a>
+                        </li>
+                        @*<li>
+                                <a href="../adminlogin/addadmin">
+                                    <i class="fas fa-user"></i>
+                                    <div>Add Admin</div>
+                                </a>
+                            </li>*@
+
+                        @*<li>
+                                <a href="#">
+                                    <i class="fas fa-users"></i>
+                                    <div>All User</div>
+                                </a>
+                            </li>*@
+
+
+                        <li>
+                            <a href="../Admin/AddEvent">
+                                <i class="fas fa-cog"></i>
+                                <div>Add Event</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../Admin/ViewEvents">
+                                <i class="fas fa-th-large"></i>
+                                <div>All Events</div>
+                            </a>
+                        </li>
+                    </ul>
+                </div> } }
+        <div class="main">
+            @using (Html.BeginForm("UpdateOrdersSave", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <div class="login">
+                    <form id="login" action="" method="post">
+                        <h5 style="color:red;">@ViewBag.msg</h5>
+                        <label for="uname"><b>Order Status</b></label>
+                        @*<input type="text" placeholder="Enter Username" name="uname" required>*@
+                        @Html.TextBoxFor(x => x.orderStatus, new { @class = "form-control", @placeholder = "Order Status", @id = "Uname" })
+                        <span style="color:red">@Html.ValidationMessageFor(x => x.orderStatus)</span>
+
+
+                        <br />
+
+                        <h5 style="color:red;">@ViewBag.msg</h5>
+                        <label for="uname"><b>Payment Status</b></label>
+                        @*<input type="text" placeholder="Enter Username" name="uname" required>*@
+                        @Html.TextBoxFor(x => x.paymentStatus, new { @class = "form-control", @placeholder = "Payment Status", @id = "Uname" })
+                        <span style="color:red">@Html.ValidationMessageFor(x => x.paymentStatus)</span>
+                        <br />
+
+                        <h5 style="color:red;">@ViewBag.msg</h5>
+                        <label for="uname"><b>Guest Number</b></label>
+                        @*<input type="text" placeholder="Enter Username" name="uname" required>*@
+                        @Html.TextBoxFor(x => x.guestNumber, new { @class = "form-control", @placeholder = "Event Image Address", @id = "Uname" })
+                        <span style="color:red">@Html.ValidationMessageFor(x => x.guestNumber)</span>
+                        <br />
+
+                        <h5 style="color:red;">@ViewBag.msg</h5>
+                        <label for="uname"><b>Event Date</b></label>
+                        @*<input type="text" placeholder="Enter Username" name="uname" required>*@
+                        @Html.TextBoxFor(x => x.eventDate, new { @class = "form-control", @placeholder = "Event price", @id = "Uname" })
+                        <span style="color:red">@Html.ValidationMessageFor(x => x.eventDate)</span>
+                        <br />
+
+                        <h5 style="color:red;">@ViewBag.msg</h5>
+                        <label for="uname"><b>Event ID</b></label>
+                        @*<input type="text" placeholder="Enter Username" name="uname" required>*@
+                        @Html.TextBoxFor(x => x.eventId, new { @class = "form-control", @placeholder = "Event Description", @id = "Uname" })
+                        <span style="color:red">@Html.ValidationMessageFor(x => x.eventId)</span>
+                        <br />
+
+
+                        <h5 style="color:red;">@ViewBag.msg</h5>
+                        <label for="uname"><b>Food ID</b></label>
+                        @*<input type="text" placeholder="Enter Username" name="uname" required>*@
+                        @Html.TextBoxFor(x => x.foodId, new { @class = "form-control", @placeholder = "Event Type", @id = "Uname" })
+                        <span style="color:red">@Html.ValidationMessageFor(x => x.foodId)</span>
+                        <br />
+
+
+                        <h5 style="color:red;">@ViewBag.msg</h5>
+                        <label for="uname"><b>User ID</b></label>
+                        @*<input type="text" placeholder="Enter Username" name="uname" required>*@
+                        @Html.TextBoxFor(x => x.userId, new { @class = "form-control", @placeholder = "Event Preparation Time", @id = "Uname" })
+                        <span style="color:red">@Html.ValidationMessageFor(x => x.userId)</span>
+                        <br />
+
+
+                        <h5 style="color:red;">@ViewBag.msg</h5>
+                        <label for="uname"><b>Event Place</b></label>
+                        @*<input type="text" placeholder="Enter Username" name="uname" required>*@
+                        @Html.TextBoxFor(x => x.eventPlace, new { @class = "form-control", @placeholder = "Event Preparation Time", @id = "Uname" })
+                        <span style="color:red">@Html.ValidationMessageFor(x => x.eventPlace)</span>
+                        <br />
+
+
+                        <div class="row">
+                            <input type="submit" value="Save" id="log" class="btn btn-success" />
+                        </div>
+
+
+                        <div class="form-group">
+                            <p style="color:red">@ViewBag.error</p>
+                        </div>
+
+                    </form>
+                </div>}
+        </div>
+
+    </div>
+</body>
+
+</html>
