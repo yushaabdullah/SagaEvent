@@ -93,13 +93,6 @@ namespace SagaEvent.Controllers
             SqlCommand sqlcomm = new SqlCommand(sqlquery, sqlconn);
             sqlconn.Open();
             sqlcomm.Parameters.AddWithValue("@eventName", event1.eventName);
-            //if(file != null && file.ContentLength > 0)
-            //{
-            //    string filename = Path.GetFileName(file.FileName);
-            //    string imgpath = Path.Combine(Server.MapPath("~/proimages/"),filename);
-            //    file.SaveAs(imgpath);
-            //}
-            //sqlcomm.Parameters.AddWithValue("@proimage", "~/proimages/"+file.FileName );
             sqlcomm.Parameters.AddWithValue("@eventType", event1.eventType);
             sqlcomm.Parameters.AddWithValue("@eventDescription", event1.eventDescription);
             sqlcomm.Parameters.AddWithValue("@eventPreparationTime", event1.eventPreparationTime);
